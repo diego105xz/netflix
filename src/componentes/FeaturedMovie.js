@@ -2,6 +2,14 @@ import React from "react";
 import './FeaturedMovie.css';
 
 export default ({item}) =>{
+    console.log(item);
+
+    let firstDate = new Date(item.first_air_date);
+    let genres = [];
+    for(let i in item.genres){
+        genres.push(item.genres[i].name);
+    }
+
     return(
         <section className="featured" style={{
             backgroundSize: 'cover',
@@ -12,10 +20,16 @@ export default ({item}) =>{
                 <div className="featured--horizontal">
                     <div className="featured--name">{item.original_name}</div>
                     <div className="featured--info">
-                        <div className="featured--points">{item.vote_average} pontos</div>
-                        <div className="featured--year">2099</div>
-                        <div className="feeatured">PAREI 1HR 41MIN</div>
+                        <div className="featured--points">{item.vote_average.toFixed(1)} Pontos</div>
+                        <div className="featured--year">{firstDate.getFullYear()}</div>
+                        <div className="feeatured--seasons">{item.number_of_seasons} Temporada{item.number_of_seasons != 1 ? 's': ''}</div>
                     </div>
+                    <div className="featured--description">{item.overview}</div>
+                    <div className="featured--buttons">
+                        <a href={`/watch/${item.id}`} className="featured--watch-btn">► Assistir</a>
+                        <a href={`/list/add/${item.id}`} className="featured--mylist-btn">+ Minha Lista</a>
+                    </div>
+                    <div className="featured--genres"><strong>Gêneros: </strong>{genres.join(', ')}</div>
                 </div>
             </div>
         </section>
