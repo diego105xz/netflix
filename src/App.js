@@ -4,6 +4,7 @@ import Tmdb from "./Tmdb";
 import MovieRow from "./componentes/MovieRow";
 import FeaturedMovie from "./componentes/FeaturedMovie";
 import Header from "./componentes/Header";
+import loading from "./img/Netflix_Load.gif";
 
 export default () => {
 
@@ -58,11 +59,17 @@ export default () => {
         {movieList.map((item, key)=>(
           <MovieRow key={key} title={item.title} items={item.items}/>
         ))}
-      </section>
-      /*Header
-      Destaque
-      As Listas
-      rodape*/
+      </section>   
+
+      <footer>
+          Clone Netflix Desenolvido por Diego Melo
+      </footer>
+
+      {movieList.length <= 0 &&
+        <div className="loading">
+            <img src={loading} alt="carregando"/>
+        </div>
+      }     
     </div>
   );
 }

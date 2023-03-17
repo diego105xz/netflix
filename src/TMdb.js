@@ -24,7 +24,7 @@ export default {
             {
                 slug: 'originals',
                 title: 'Originais do Netflix',
-                items: await basicFetch(`/discover/tv?with_network=213&language=pt-BR&api_key=${API_KEY}`)
+                items: await basicFetch(`/discover/tv?with_original_language=en&vote_average.gte=8&language=pt-BR&api_key=${API_KEY}`)
             },
             {
                 slug: 'trending',
