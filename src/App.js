@@ -62,7 +62,7 @@ export default () => {
       </section>   
 
       <footer>
-          Clone Netflix Desenvolvido por Diego Melo
+          Clone do Netflix Desenvolvido por Diego Melo
       </footer>
 
       {movieList.length <= 0 &&
